@@ -28,3 +28,32 @@ button {
 a {
   text-decoration: none;
 }
+
+.home_aside {
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  backdrop-filter: blur(4px) saturate(200%);
+  -webkit-backdrop-filter: blur(4px) saturate(200%);
+  background-color: rgba(49, 194, 204, 0.4);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home_aside button {
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgb(23, 35, 76);
+  transition: all 0.4s;
+  box-shadow: 0.3em 0.3em 0 0 rgb(23, 35, 76),
+    inset 0.3em 0.3em 0 0 rgb(23, 35, 76);
+  padding: 20px;
+}
+
+.home_aside button:hover {
+  box-shadow: 0 0 0 0 rgb(23, 35, 76), inset 6em 3.5em 0 0 rgb(23, 35, 76);
+  border-radius: 20px;
+  color: rgb(49, 194, 204);
+}

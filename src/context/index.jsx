@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
-import { cards, DIFFICULTY, TURN } from "./data";
+import { DIFFICULTY, TURN } from "./data";
+import { easyMode, hardMode } from "./functions";
 
 const initialState = {
   memory: [],
@@ -12,19 +13,29 @@ export const MemoryContext = createContext(null);
 export function MemoryContextProvider({ children }) {
   const [state, setState] = useState(initialState);
 
+  function resetGame() {
+    setState(initialState);
+  }
   function newGame() {
     if (state.difficulty === DIFFICULTY.easy) {
-      setState((prevState) => ({ ...prevState, memory: [...cards] }));
+      const newCards = easyMode();
+      setState((prevState) => ({ ...prevState, memory: newCards }));
     } else {
-      setState((prevState) => ({ ...prevState, memory: [...cards, ...cards] }));
+      const newCards = hardMode();
+      setState((prevState) => ({ ...prevState, memory: newCards }));
     }
+  }
+  function modeHard() {
+    setState((prevState) => ({ ...prevState, difficulty: DIFFICULTY.hard }));
   }
 
   return (
     <MemoryContext.Provider
       value={{
         ...state,
+        resetGame,
         newGame,
+        modeHard,
       }}
     >
       {children}

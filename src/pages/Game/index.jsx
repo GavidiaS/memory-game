@@ -1,9 +1,16 @@
+import { useEffect } from "react";
+import { useMemoryContext } from "../../context/hooks";
 import Layout from "../../components/Layout";
+import CardList from "../../components/CardList";
 
 function Game() {
+  const { newGame } = useMemoryContext();
+  useEffect(() => {
+    newGame();
+  }, []);
   return (
     <Layout>
-      <h1>Game Page</h1>
+      <CardList />
     </Layout>
   );
 }

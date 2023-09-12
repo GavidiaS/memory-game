@@ -1,0 +1,18 @@
+.list_easy,
+.list_hard {
+  width: 100%;
+  max-width: 1000px;
+  display: grid;
+}
+
+.list_easy {
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.list_hard {
+  grid-template-columns: repeat(8, 1fr);
+  column-gap: 5px;
+  row-gap: 5px;
+}

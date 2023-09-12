@@ -1,0 +1,50 @@
+.select_aside {
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(23, 35, 76, 0.8);
+  border-radius: 20px;
+}
+
+.select_section {
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 30px;
+}
+
+.select_section h2 {
+  font-size: 4rem;
+  font-weight: bold;
+  color: rgb(49, 194, 204);
+  user-select: none;
+  text-align: center;
+}
+
+.select_div {
+  height: 180px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.select_div button {
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgb(23, 35, 76);
+  background-color: rgb(49, 194, 204);
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: all 0.4s;
+  overflow: hidden;
+}
+
+.select_div button:hover {
+  transform: scale(1.1);
+  background-color: #fff;
+}
