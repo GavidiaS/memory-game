@@ -2,17 +2,16 @@
 .list_hard {
   width: 100%;
   max-width: 1000px;
+  height: 80vh;
   display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(auto-fill, auto);
 }
 
 .list_easy {
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 10px;
-  row-gap: 10px;
+  gap: 10px 10px;
 }
 
 .list_hard {
-  grid-template-columns: repeat(8, 1fr);
-  column-gap: 5px;
-  row-gap: 5px;
+  gap: 5px 5px;
 }
