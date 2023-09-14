@@ -1,12 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { DIFFICULTY, TURN } from "./data";
-import { easyMode, hardMode } from "./functions";
+import { easyMode, hardMode, addId } from "./functions";
 
 const initialState = {
   memory: [],
   difficulty: DIFFICULTY.easy,
   turn: TURN.player1,
-  parCards: [],
+  selectedCards: [],
   score1: 0,
   score2: 0,
   winner: null,
@@ -20,62 +20,20 @@ export function MemoryContextProvider({ children }) {
   function resetGame() {
     setState(initialState);
   }
-  function newGame() {
-    if (state.difficulty === DIFFICULTY.easy) {
-      const newCards = easyMode();
-      setState((prevState) => ({ ...prevState, memory: newCards }));
-    } else {
-      const newCards = hardMode();
-      setState((prevState) => ({ ...prevState, memory: newCards }));
-    }
-  }
-  function modeHard() {
-    setState((prevState) => ({ ...prevState, difficulty: DIFFICULTY.hard }));
-  }
   function handleTurn() {
     const newTurn = state.turn === TURN.player1 ? TURN.player2 : TURN.player1;
     setState((prevState) => ({ ...prevState, turn: newTurn }));
   }
-  function handleShow(index) {
-    const newRender = [...state.memory];
-    if (newRender[index].show) {
-      newRender[index].show = false;
+  function scores() {
+    if (state.turn === TURN.player1) {
+      setState((prevState) => ({ ...prevState, score1: state.score1 + 1 }));
     } else {
-      newRender[index].show = true;
-    }
-    setState((prevState) => ({ ...prevState, memory: newRender }));
-  }
-  function addParCards(index) {
-    const newParCards = [...state.parCards];
-    newParCards.push({ card: state.memory[index].name, num: index });
-    setState((prevState) => ({ ...prevState, parCards: newParCards }));
-  }
-  function gameMemory() {
-    if (state.parCards.length === 2) {
-      const verific = state.parCards[0].card === state.parCards[1].card;
-      if (verific) {
-        if (state.turn === TURN.player1) {
-          setState((prevState) => ({
-            ...prevState,
-            score1: prevState.score1 + 1,
-          }));
-          setState((prevState) => ({ ...prevState, parCards: [] }));
-        } else {
-          setState((prevState) => ({
-            ...prevState,
-            score2: prevState.score2 + 1,
-          }));
-          setState((prevState) => ({ ...prevState, parCards: [] }));
-        }
-      } else {
-        handleShow(state.parCards[0].num);
-        handleShow(state.parCards[1].num);
-        setState((prevState) => ({ ...prevState, parCards: [] }));
-        handleTurn();
-      }
+      setState((prevState) => ({ ...prevState, score2: state.score2 + 1 }));
     }
   }
   function isWinner() {
+    const verific = state.memory.every((card) => card.isMatch === true);
+    if (!verific || state.memory.length === 0) return;
     if (state.score1 > state.score2) {
       setState((prevState) => ({ ...prevState, winner: TURN.player1 }));
     } else if (state.score1 < state.score2) {
@@ -84,18 +42,61 @@ export function MemoryContextProvider({ children }) {
       setState((prevState) => ({ ...prevState, winner: "Empate" }));
     }
   }
+  function selectMode(selected) {
+    if (selected) {
+      setState((prevState) => ({ ...prevState, difficulty: DIFFICULTY.hard }));
+    }
+  }
+  function newGame() {
+    if (state.difficulty === DIFFICULTY.easy) {
+      const newCards = addId(easyMode());
+      setState((prevState) => ({ ...prevState, memory: newCards }));
+    } else {
+      const newCards = addId(hardMode());
+      setState((prevState) => ({ ...prevState, memory: newCards }));
+    }
+  }
+  function addSelectedCards(card) {
+    const newSelectedCards = [...state.selectedCards];
+    newSelectedCards.push(card);
+    setState((prevState) => ({
+      ...prevState,
+      selectedCards: newSelectedCards,
+    }));
+  }
+  function checkMatch() {
+    if (state.selectedCards[0].name === state.selectedCards[1].name) {
+      const updateMemory = state.memory.map((card) => {
+        if (card.name === state.selectedCards[0].name) {
+          return { ...card, isMatch: true };
+        }
+        return card;
+      });
+      setState((prevState) => ({ ...prevState, memory: updateMemory }));
+      scores();
+    } else {
+      handleTurn();
+    }
+  }
+
+  useEffect(() => {
+    if (state.selectedCards.length === 2) {
+      setTimeout(() => {
+        setState((prevState) => ({ ...prevState, selectedCards: [] }));
+      }, 1000);
+      checkMatch();
+    }
+    isWinner();
+  }, [state.selectedCards]);
 
   return (
     <MemoryContext.Provider
       value={{
         ...state,
         resetGame,
+        selectMode,
         newGame,
-        modeHard,
-        isWinner,
-        gameMemory,
-        handleShow,
-        addParCards,
+        addSelectedCards,
       }}
     >
       {children}

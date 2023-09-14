@@ -13,52 +13,52 @@ export const cards = [
   {
     name: "html",
     icon: html,
-    show: false,
+    isMatch: false,
   },
   {
     name: "css",
     icon: css,
-    show: false,
+    isMatch: false,
   },
   {
     name: "javascript",
     icon: javascript,
-    show: false,
+    isMatch: false,
   },
   {
     name: "react",
     icon: react,
-    show: false,
+    isMatch: false,
   },
   {
     name: "node",
     icon: node,
-    show: false,
+    isMatch: false,
   },
   {
     name: "redux",
     icon: redux,
-    show: false,
+    isMatch: false,
   },
   {
     name: "git",
     icon: git,
-    show: false,
+    isMatch: false,
   },
   {
     name: "github",
     icon: github,
-    show: false,
+    isMatch: false,
   },
   {
     name: "postgres",
     icon: postgres,
-    show: false,
+    isMatch: false,
   },
   {
     name: "sequelize",
     icon: sequelize,
-    show: false,
+    isMatch: false,
   },
 ];
 

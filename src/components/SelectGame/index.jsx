@@ -4,11 +4,9 @@ import { useMemoryContext } from "../../context/hooks";
 
 function SelectGame() {
   const navigate = useNavigate();
-  const { modeHard } = useMemoryContext();
+  const { selectMode } = useMemoryContext();
   function selectedMode(difficulty) {
-    if (difficulty) {
-      modeHard();
-    }
+    selectMode(difficulty);
     navigate("/game");
   }
   return (
