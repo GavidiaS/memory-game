@@ -1,6 +1,7 @@
 .card_flip {
-  min-width: 50px;
-  min-height: 50px;
+  min-width: 80px;
+  min-height: 100px;
+  cursor: pointer;
 }
 
 .flip_card-inner {
@@ -23,20 +24,22 @@
 }
 
 .flip_card-front {
-  background-color: #e36;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px) saturate(150%);
 }
 
 .flip_card-back {
   font-size: 50px;
   display: grid;
   place-items: center;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px) saturate(150%);
   transform: rotateY(180deg);
 }
 
 .flip_card-back img {
-  width: 50%;
-  height: 50%;
+  width: 60%;
+  height: 60%;
 }
 
 /* .card_flip:hover .flip_card-inner {

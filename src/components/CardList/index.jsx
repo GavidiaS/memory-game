@@ -4,7 +4,7 @@ import Card from "../Card";
 
 function CardList() {
   const { memory } = useMemoryContext();
-  const nameClass = memory.length > 20 ? "list_hard" : "list_easy";
+  const nameClass = memory.length > 10 ? "list_hard" : "list_easy";
 
   return (
     <section className={nameClass}>

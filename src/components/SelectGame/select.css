@@ -1,7 +1,7 @@
 .select_aside {
   width: 100%;
   max-width: 400px;
-  background-color: rgba(23, 35, 76, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
   border-radius: 20px;
 }
 
@@ -19,7 +19,7 @@
 .select_section h2 {
   font-size: 4rem;
   font-weight: bold;
-  color: rgb(49, 194, 204);
+  color: #f1ce3d;
   user-select: none;
   text-align: center;
 }
@@ -37,7 +37,7 @@
   font-size: 2rem;
   font-weight: 600;
   color: rgb(23, 35, 76);
-  background-color: rgb(49, 194, 204);
+  background-color: #f1ce3d;
   padding: 10px 20px;
   border-radius: 20px;
   transition: all 0.4s;

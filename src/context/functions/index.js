@@ -5,26 +5,17 @@ const arrayRandomSort = (array) => {
   return newArray;
 };
 
-export const easyMode = (boolean = false) => {
-  if (boolean) {
-    const newCards = [...cards, ...cards].map((card) => ({
-      ...card,
-      name: card.name.toUpperCase(),
-    }));
-    const randomOrder = arrayRandomSort(newCards);
-    return randomOrder;
-  } else {
-    const newCards = [...cards, ...cards];
-    const randomOrder = arrayRandomSort(newCards);
-    return randomOrder;
-  }
+export const easyMode = () => {
+  const cardsPart = cards.slice(0, 5);
+  const newCards = [...cardsPart, ...cardsPart];
+  const randomCards = arrayRandomSort(newCards);
+  return randomCards;
 };
 
 export const hardMode = () => {
-  const cards1 = easyMode();
-  const cards2 = easyMode(true);
-  const newCards = cards1.concat(cards2);
-  return newCards;
+  const newCards = [...cards, ...cards];
+  const randomCards = arrayRandomSort(newCards);
+  return randomCards;
 };
 
 export const addId = (array) => {

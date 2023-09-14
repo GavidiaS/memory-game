@@ -35,7 +35,7 @@ a {
   height: 200px;
   backdrop-filter: blur(4px) saturate(200%);
   -webkit-backdrop-filter: blur(4px) saturate(200%);
-  background-color: rgba(49, 194, 204, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -45,15 +45,33 @@ a {
 .home_aside button {
   font-size: 3rem;
   font-weight: bold;
-  color: rgb(23, 35, 76);
+  color: #f1ce3d;
   transition: all 0.4s;
-  box-shadow: 0.3em 0.3em 0 0 rgb(23, 35, 76),
-    inset 0.3em 0.3em 0 0 rgb(23, 35, 76);
+  box-shadow: 0.3em 0.3em 0 0 #f1ce3d, inset 0.3em 0.3em 0 0 #f1ce3d;
   padding: 20px;
 }
 
 .home_aside button:hover {
-  box-shadow: 0 0 0 0 rgb(23, 35, 76), inset 6em 3.5em 0 0 rgb(23, 35, 76);
+  box-shadow: 0 0 0 0 #f1ce3d, inset 6em 3.5em 0 0 #f1ce3d;
   border-radius: 20px;
-  color: rgb(49, 194, 204);
+  color: rgb(23, 35, 76);
+}
+
+.game_div {
+  width: 200px;
+  height: 30px;
+  position: absolute;
+  top: 11vh;
+  left: calc(50% - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0006;
+  border-radius: 10px;
+}
+
+.game_div p {
+  color: #f1ce3d;
+  font-size: 2rem;
+  font-weight: bold;
 }

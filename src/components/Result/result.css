@@ -1,0 +1,36 @@
+.result_aside {
+  width: 300px;
+  height: 350px;
+  position: fixed;
+  top: 25vh;
+  left: calc(50% - 150px);
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 0;
+  border-radius: 20px;
+}
+
+.result_aside h2 {
+  color: #f1ce3d;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.result_aside a {
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgb(23, 35, 76);
+  background-color: #f1ce3d;
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: all 0.4s;
+}
+
+.result_aside a:hover {
+  color: #f1ce3d;
+  background-color: rgb(23, 35, 76);
+}
